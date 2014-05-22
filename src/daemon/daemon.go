@@ -24,11 +24,13 @@ func Daemon() {
 		var connection, err = listener.Accept()
 		if err != nil { continue }
 
-		handleClient(connection)
+		go handleClient(connection)
 	}
 }
 
 func handleClient(conn net.Conn) {
+	defer conn.Close()
+
 	var buf [512]byte
 	for {
 		n, err := conn.Read(buf[0:])
