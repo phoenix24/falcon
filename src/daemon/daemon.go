@@ -21,7 +21,7 @@ func Daemon() {
 	handleError(err)
 
 	for {
-		var connection, err = listener.Accept()
+		connection, err := listener.AcceptTCP()
 		if err != nil { continue }
 
 		go handleClient(connection)
