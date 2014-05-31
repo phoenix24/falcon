@@ -3,10 +3,6 @@ language: go
 go:
   - 1.2.2
 
-before_install:
-  - sudo apt-get update -qq
-  - go get github.com/zdannar/flogger
-
 install:
   - make all
 
