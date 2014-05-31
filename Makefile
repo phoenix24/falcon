@@ -1,12 +1,20 @@
 GO ?= go
 export GOPATH:=$(shell pwd)
+export BUILDTAGS=debug
 
-all: build test
 
+default: all
 
-build:
-	$(GO) build client
-	$(GO) build daemon
+all: client daemon fmt
+
+fmt:
+	go fmt ./...
+
+client:
+	go install -tags '$(BUILDTAGS)' client
+
+daemon:
+	go install -tags '$(BUILDTAGS)' daemon
 
 test:
 	$(GO) test ./...

@@ -8,7 +8,7 @@ before_install:
   - go get github.com/zdannar/flogger
 
 install:
-  - make build
+  - make all
 
 script:
   - make test
