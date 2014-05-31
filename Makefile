@@ -6,7 +6,8 @@ all: build test
 
 
 build:
-	$(GO) build
+	$(GO) build client
+	$(GO) build daemon
 
 test:
 	$(GO) test ./...

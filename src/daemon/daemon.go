@@ -1,7 +1,6 @@
 package daemon
 
 import (
-	"fmt"
 	"net"
 	"os"
 	log "github.com/zdannar/flogger"
