@@ -1,7 +1,5 @@
 GO ?= go
 
-GOPATH  := $(CURDIR)/_vendor:$(GOPATH)
-
 all: build test
 
 
