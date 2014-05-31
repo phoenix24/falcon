@@ -1,24 +1,24 @@
 package main
 
 import (
-	"fmt"
-	"flag"
 	"client"
 	"daemon"
+	"flag"
+	"fmt"
 	log "github.com/zdannar/flogger"
 )
 
 const (
-    LOGFILE = "/var/log/falcon.log"
+	LOGFILE = "/var/log/falcon.log"
 )
 
 func setupLogging() {
-    if err := log.OpenFile(LOGFILE, log.FLOG_APPEND, 0644); err != nil {
-        log.Fatalf("Unable to open log file : %s", err)
-    }
+	if err := log.OpenFile(LOGFILE, log.FLOG_APPEND, 0644); err != nil {
+		log.Fatalf("Unable to open log file : %s", err)
+	}
 
-    log.SetLevel(log.INFO)
-    log.RedirectStreams()
+	log.SetLevel(log.INFO)
+	log.RedirectStreams()
 }
 
 func main() {

@@ -1,13 +1,13 @@
 package daemon
 
 import (
+	log "github.com/zdannar/flogger"
 	"net"
 	"os"
-	log "github.com/zdannar/flogger"
 )
 
 var (
-	port = ":4224"
+	port        = ":4224"
 	application = "falcon-daemon"
 )
 
@@ -26,7 +26,9 @@ func Daemon() {
 
 	for {
 		connection, err := listener.AcceptTCP()
-		if err != nil { continue }
+		if err != nil {
+			continue
+		}
 
 		go handleClient(connection)
 	}
@@ -38,15 +40,19 @@ func handleClient(conn net.Conn) {
 	var buf [512]byte
 	for {
 		n, err := conn.Read(buf[0:])
-		if err != nil { return }
+		if err != nil {
+			return
+		}
 
 		log.Infof(string(buf[0:n]))
 		_, err1 := conn.Write(buf[0:n])
-		if err1 != nil { return }
+		if err1 != nil {
+			return
+		}
 	}
 }
 
 func handleError(err error) {
-		log.Infof("Error while bootstrapping. Aborting. %s\n", err)
-		os.Exit(1)
+	log.Infof("Error while bootstrapping. Aborting. %s\n", err)
+	os.Exit(1)
 }

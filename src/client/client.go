@@ -2,13 +2,13 @@ package client
 
 import (
 	"fmt"
+	log "github.com/zdannar/flogger"
 	"net"
 	"os"
-	log "github.com/zdannar/flogger"
 )
 
 var (
-	port = ":4224"
+	port        = ":4224"
 	application = "falcon-client"
 )
 
@@ -20,8 +20,6 @@ func Client() {
 
 	conn, err := net.DialTCP("tcp", nil, address)
 	handleError(err)
-
-
 
 	message := "hello world"
 	request := []byte(fmt.Sprintf("request: %s\n", message))
