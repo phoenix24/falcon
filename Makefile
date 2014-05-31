@@ -7,13 +7,16 @@ default: all
 
 all: client daemon fmt
 
+deps:
+	go get  -d github.com/zdannar/flogger
+
 fmt:
 	go fmt ./...
 
-client:
+client: deps
 	go install -tags '$(BUILDTAGS)' client
 
-daemon:
+daemon: deps
 	go install -tags '$(BUILDTAGS)' daemon
 
 test:
