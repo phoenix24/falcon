@@ -1,4 +1,5 @@
 GO ?= go
+export GOPATH:=$(shell pwd)
 
 all: build test
 
