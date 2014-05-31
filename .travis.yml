@@ -1,0 +1,22 @@
+language: go
+
+go:
+  - 1.2.2
+
+before_install:
+  - sudo apt-get update -qq
+  - go get github.com/zdannar/flogger
+
+install:
+  - make build
+
+script:
+  - make test
+
+notifications:
+  email:
+    recipients:
+      - chaitanya@3bandar.org
+      - pradeep.chhetri89@gmail.com
+    on_success: change
+    on_failure: always
