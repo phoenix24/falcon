@@ -6,13 +6,8 @@ import (
 	"os"
 )
 
-var (
-	port        = ":4224"
-	application = "falcon-daemon"
-)
-
-func Daemon() {
-	log.Println("%s, listening on port %s\n", application, port)
+func Daemon(port string) {
+	log.Println("falcon-daemon listening %s\n", port)
 
 	address, err := net.ResolveTCPAddr("tcp", port)
 	if err != nil {

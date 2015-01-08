@@ -18,9 +18,12 @@ func main() {
 
 	mode := flag.Arg(0)
 	if mode == "daemon" {
-		daemon.Daemon()
+		port := flag.Arg(1)
+		daemon.Daemon(port)
 	}
+	
 	if mode == "client" {
-		client.Client()
+	   	hostPort := flag.Arg(1)
+		client.Client(hostPort)
 	}
 }

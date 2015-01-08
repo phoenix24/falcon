@@ -7,15 +7,10 @@ import (
 	"os"
 )
 
-var (
-	port        = ":4224"
-	application = "falcon-client"
-)
+func Client(hostPort string) {
+	log.Println("falcon-client connecting to %s\n", hostPort)
 
-func Client() {
-	log.Println("%s, running., connecting to localhost on port %s\n", application, port)
-
-	address, err := net.ResolveTCPAddr("tcp", port)
+	address, err := net.ResolveTCPAddr("tcp", hostPort)
 	handleError(err)
 
 	conn, err := net.DialTCP("tcp", nil, address)
