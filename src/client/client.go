@@ -22,15 +22,13 @@ func Client(hostPort string) {
 
 	var buf [512]byte
 
-	for {
-		n, err := conn.Read(buf[0:])
-		handleError(err)
+	n, err := conn.Read(buf[0:])
+	handleError(err)
 
-		response := buf[0:n]
-		log.Println(string(response))
+	response := buf[0:n]
+	log.Println(string(response))
 
-		conn.Write(response[0:])
-	}
+	conn.Write(response[0:])
 }
 
 func handleError(err error) {

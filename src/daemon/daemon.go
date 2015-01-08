@@ -33,17 +33,15 @@ func handleClient(conn net.Conn) {
 	defer conn.Close()
 
 	var buf [512]byte
-	for {
-		n, err := conn.Read(buf[0:])
-		if err != nil {
-			return
-		}
+	n, err := conn.Read(buf[0:])
+	if err != nil {
+		return
+	}
 
-		log.Println(string(buf[0:n]))
-		_, err1 := conn.Write(buf[0:n])
-		if err1 != nil {
-			return
-		}
+	log.Println(string(buf[0:n]))
+	_, err1 := conn.Write(buf[0:n])
+	if err1 != nil {
+	   return
 	}
 }
 
