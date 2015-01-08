@@ -2,7 +2,7 @@ package client
 
 import (
 	"fmt"
-	log "github.com/zdannar/flogger"
+	"log"
 	"net"
 	"os"
 )
@@ -13,7 +13,7 @@ var (
 )
 
 func Client() {
-	log.Infof("%s, running., connecting to localhost on port %s\n", application, port)
+	log.Println("%s, running., connecting to localhost on port %s\n", application, port)
 
 	address, err := net.ResolveTCPAddr("tcp", port)
 	handleError(err)
@@ -32,7 +32,7 @@ func Client() {
 		handleError(err)
 
 		response := buf[0:n]
-		log.Infof(string(response))
+		log.Println(string(response))
 
 		conn.Write(response[0:])
 	}
@@ -40,7 +40,7 @@ func Client() {
 
 func handleError(err error) {
 	if err != nil {
-		log.Infof("error while bootstrapping. abort. %s\n", err)
+		log.Println("error while bootstrapping. abort. %s\n", err)
 		os.Exit(1)
 	}
 }

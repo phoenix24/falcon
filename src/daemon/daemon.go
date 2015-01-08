@@ -1,7 +1,7 @@
 package daemon
 
 import (
-	log "github.com/zdannar/flogger"
+	"log"
 	"net"
 	"os"
 )
@@ -12,7 +12,7 @@ var (
 )
 
 func Daemon() {
-	log.Infof("%s, listening on port %s\n", application, port)
+	log.Println("%s, listening on port %s\n", application, port)
 
 	address, err := net.ResolveTCPAddr("tcp", port)
 	if err != nil {
@@ -44,7 +44,7 @@ func handleClient(conn net.Conn) {
 			return
 		}
 
-		log.Infof(string(buf[0:n]))
+		log.Println(string(buf[0:n]))
 		_, err1 := conn.Write(buf[0:n])
 		if err1 != nil {
 			return
@@ -53,6 +53,6 @@ func handleClient(conn net.Conn) {
 }
 
 func handleError(err error) {
-	log.Infof("Error while bootstrapping. Aborting. %s\n", err)
+	log.Println("Error while bootstrapping. Aborting. %s\n", err)
 	os.Exit(1)
 }
